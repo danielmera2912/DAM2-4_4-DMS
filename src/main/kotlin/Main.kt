@@ -12,9 +12,8 @@ class Pila<T>(var lista: List<T>){
 fun main(args: Array<String>) {
     fun <T> reverse(lista: List<T>):List<T>{
         var p1= Pila(lista)
-        var pc2: MutableList<T> = mutableListOf()
-        var np2=pc2.toList()
-        var p2= Pila(np2)
+        var pc2: List<T> = listOf()
+        var p2= Pila(pc2)
         var elemento: T
 
         if(!p1.vacia()){
