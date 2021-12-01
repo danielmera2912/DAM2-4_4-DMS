@@ -11,12 +11,13 @@ class Pila<T>(var lista: List<T>){
 fun main(args: Array<String>) {
     fun <T> reverse(lista: List<T>):Pila<T>{
         var p1= Pila(lista)
-        val p2: MutableList<T> = mutableListOf()
-
-        var elemento: String
+        var pc2: MutableList<T> = mutableListOf()
+        var np2=pc2.toList()
+        var p2= Pila(np2)
+        var elemento: T
         if(!p1.vacia()){
             for (item in p1.get()){
-                elemento= p1.tope().toString()
+                elemento= p1.tope()!!
                 p1.pop()
                 p2.push(elemento)
 
