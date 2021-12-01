@@ -1,26 +1,18 @@
-class Pila<out T>(public val lista: List<T>){
-    // debería de hacer una conversión de List to ArrayList para poder funcionar el push y pop, pero no he sido capaz
-    // se me ocurrió una forma usando algo como esto, pero no he sido capaz de implementarlo a los métodos
-    /*
-    public fun <T> List<out T>.reversed(): List<T> {
-    val list = toMutableList()
-    return list
-}
-     */
-    fun get()= lista
-    fun push(item: T) = lista.add(item)
-    fun pop()= if (lista.isNotEmpty()) lista.removeAt(lista.size) else null
-    fun tope()=lista.lastOrNull()
-    fun vacia() = lista.count() == 0
+class Pila<T>(var lista: List<T>){
+
+    private val listaMutable = lista.toMutableList()
+    fun get()= listaMutable
+    fun push(item: T) = listaMutable.add(item)
+    fun pop()= if (listaMutable.isNotEmpty()) listaMutable.removeAt(listaMutable.size) else null
+    fun tope()=listaMutable.lastOrNull()
+    fun vacia() = listaMutable.count() == 0
 }
 
 fun main(args: Array<String>) {
-    fun reverse(lista: List<Any>):Pila<Any>{
+    fun <T> reverse(lista: List<T>):Pila<T>{
         var p1= Pila(lista)
-        var p2= Pila(lista)
-        for (item in p2.get()){
-            p2.pop()
-        }
+        val p2: MutableList<T> = mutableListOf()
+
         var elemento: String
         if(!p1.vacia()){
             for (item in p1.get()){
